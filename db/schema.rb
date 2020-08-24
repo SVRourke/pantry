@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200824151658) do
+ActiveRecord::Schema.define(version: 20200824164913) do
+
+  create_table "contributions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "list_id"
+    t.string   "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"
@@ -19,6 +27,23 @@ ActiveRecord::Schema.define(version: 20200824151658) do
     t.boolean  "confirmed"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string   "title"
+    t.string   "content"
+    t.boolean  "aquired"
+    t.integer  "list_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
