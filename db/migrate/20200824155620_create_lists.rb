@@ -6,4 +6,4 @@ class CreateLists < ActiveRecord::Migration
       t.timestamps null: false
     end
   end
-enduser
+end
