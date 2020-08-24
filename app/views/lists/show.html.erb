@@ -1,1 +1,16 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1><%= @list.title %></h1>
+<p><%= @list.description %></p>
+<br>
+<br>
+<!-- <h3>Permissions: <%= @role %></h3> -->
+
+
+<p>add item form</p>
+
+<h4>Items:</h4>
+<% if @list.items.count > 0 %>
+    <h5>EXAMPLE LIST ITEM</h5>
+<% else %>
+    <h4>This list seems to be empty. Add an Item!</h4>
+<% end %>
+

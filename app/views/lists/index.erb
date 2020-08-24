@@ -1,0 +1,12 @@
+<h1>This is the Model's index page.</h1>
+<a href="/lists/new">Create a List +</a>
+<% List.all.each do |list| %>
+    <a href="/lists/<%= list.id %>">
+        <div>
+            <h3><%= list.title %></h3>
+            <h5><%= list.description %>...</h5>
+        </div>
+    </a>
+    <br>
+    <br>
+<% end %>
