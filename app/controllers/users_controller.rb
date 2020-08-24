@@ -1,13 +1,23 @@
 class UsersController < ApplicationController
 
   # GET: /users
-  get "/users" do
-    erb :"/users/index.html"
-  end
+  # get "/users" do
+  #   unauthorized_redirect
+
+  #   erb :"/users/index.html"
+  # end
 
   # GET: /users/5
   get "/users/:id" do
-    erb :"/users/show.html"
+    unauthorized_redirect
+    @user = User.find_by_id(params[:id])
+    if current_user == @user
+      @admin_lists = @user.lists.filter {|list| list.get_role(@user) == "admin" }
+      @guest_lists = @user.lists.filter {|list| list.get_role(@user) != "admin" }
+      erb :"/users/show.html"
+    else
+      redirect "/login"
+    end
   end
 
   # # GET: /users/5/edit

@@ -11,4 +11,9 @@ class List < ActiveRecord::Base
     def add_contributor(contributor_id)
         @contrib = Contribution.create(:user => User.find_by_id(contributor_id), :list => self)
     end
+
+    def get_role(user)
+        # binding.pry
+        contributions.find {|c| c.user == user}.role
+    end
 end
