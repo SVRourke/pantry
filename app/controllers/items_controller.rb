@@ -1,9 +1,9 @@
 class ItemsController < ApplicationController
 
   # GET: /items
-  get "/items" do
-    erb :"/items/index.html"
-  end
+  # get "/items" do
+  #   erb :"/items/index.html"
+  # end
 
   # GET: /items/new
   get "/items/new" do
