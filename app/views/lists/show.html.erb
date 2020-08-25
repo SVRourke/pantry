@@ -2,14 +2,32 @@
 <p><%= @list.description %></p>
 <br>
 <br>
-<!-- <h3>Permissions: <%= @role %></h3> -->
+ <h3></h3>Permissions: <%= @role %></h3>
 
 
-<p>add item form</p>
+<p>add item</p>
+<form action="/items" method="post">
+    <label for="title">Title:</label>
+    <input type="text" name="title" id="title">
+
+    <label for="content">Note:</label>
+    <input type="text" name="content" id="content">
+
+    <button type="submit">Add Item</button>
+</form>
 
 <h4>Items:</h4>
 <% if @list.items.count > 0 %>
-    <h5>EXAMPLE LIST ITEM</h5>
+    <% @list.items.each do |item| %>
+        <h3><%= item.title %></h3>
+        <p><%= item.content %></p>
+        <p><%= item.aquired %></p>
+        <form action="/items/<%= item.id %>/delete" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit">Delete Item</button>
+        </form>
+        <br>
+    <% end %>
 <% else %>
     <h4>This list seems to be empty. Add an Item!</h4>
 <% end %>
