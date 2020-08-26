@@ -1,13 +1,13 @@
-<h1>This is the show page for an individual instance of your model.</h1>
-
-<h4>Admin'd Lists: </h4>
+<h1>Hi <%= current_user.username %></h1>
+<a href="/lists/new">New List</a>
+<a href="/friends/new">Add Friend</a>
+<h4>Lists: </h4>
 <% @admin_lists.each do |list|%>
     <a href="/lists/<%= list.id %>"><%= list.title %></a>
     <br>
 <% end %>
 
-<h4>Guest Lists: </h4>
-<% @guest_lists.each do |list|%>
-    <a href="/lists/<%= list.id %>"><%= list.title %></a>
-    <br>
+<h4>Friends</h4>
+<% @user.friends.each do |friend| %>
+    <h3><%= friend.username %></h3>
 <% end %>

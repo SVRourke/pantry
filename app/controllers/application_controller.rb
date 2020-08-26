@@ -12,7 +12,7 @@ class ApplicationController < Sinatra::Base
 
   get "/" do
     unauthorized_redirect
-    erb :"/app/home"
+    authorized_redirect
   end
   
   get "/join" do
@@ -60,13 +60,13 @@ class ApplicationController < Sinatra::Base
 # -----------------------------------------------------------
   def unauthorized_redirect
     if !logged_in?
-      redirect "/join"
+      redirect "/login"
     end
   end
 
   def authorized_redirect
     if logged_in?
-      redirect "/"
+      redirect "/users/#{current_user.id}"
     end
   end
 

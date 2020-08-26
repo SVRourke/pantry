@@ -1,18 +1,16 @@
 <h1><%= @list.title %></h1>
 <p><%= @list.description %></p>
+ <h3></h3>Role: <%= @role %></h3>
 <br>
 <br>
- <h3></h3>Permissions: <%= @role %></h3>
-
-
 <p>add item</p>
 <form action="/items" method="post">
-    <label for="title">Title:</label>
+    <label for="title">title:</label>
     <input type="text" name="title" id="title">
-
-    <label for="content">Note:</label>
+    <br>
+    <label for="content">desc:</label>
     <input type="text" name="content" id="content">
-
+    <br>
     <button type="submit">Add Item</button>
 </form>
 
@@ -32,3 +30,9 @@
     <h4>This list seems to be empty. Add an Item!</h4>
 <% end %>
 
+<% if @role == 'admin' %>
+    <form action="/lists/<%= @list.id %>/delete" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button type="submit">Delete List?</button>
+    </form>
+<% end %>
