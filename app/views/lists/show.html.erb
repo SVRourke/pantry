@@ -19,7 +19,7 @@
     <% @list.items.each do |item| %>
         <h3><%= item.title %></h3>
         <p><%= item.content %></p>
-        <p><%= item.aquired %></p>
+        <p><%= item.acquired %></p>
         <form action="/items/<%= item.id %>/delete" method="post">
             <input type="hidden" name="_method" value="delete">
             <button type="submit">Delete Item</button>

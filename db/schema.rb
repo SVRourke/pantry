@@ -25,14 +25,14 @@ ActiveRecord::Schema.define(version: 20200824164913) do
     t.integer  "user_id"
     t.integer  "friend_id"
     t.boolean  "confirmed"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "items", force: :cascade do |t|
     t.string   "title"
     t.string   "content"
-    t.boolean  "aquired"
+    t.boolean  "acquired"
     t.integer  "list_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false

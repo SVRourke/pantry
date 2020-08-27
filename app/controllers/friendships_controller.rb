@@ -1,37 +1,38 @@
 class FriendshipsController < ApplicationController
 
-  # GET: /friendships
-  get "/friendships" do
-    erb :"/friendships/index.html"
+  # GET: /friends
+  get "/friends" do
+    erb :"/friends/index.html"
   end
 
-  # GET: /friendships/new
-  get "/friendships/new" do
-    erb :"/friendships/new.html"
+  # GET: /friends/new
+  get "/friends/new" do
+    erb :"/friends/new.html"
   end
 
-  # POST: /friendships
-  post "/friendships" do
-    redirect "/friendships"
+  # POST: /friends
+  post "/friends" do
+    @user = User.find_by_username(params[:username])
+    redirect "/friends"
   end
 
-  # GET: /friendships/5
-  get "/friendships/:id" do
-    erb :"/friendships/show.html"
+  # GET: /friends/5
+  get "/friends/:id" do
+    erb :"/friends/show.html"
   end
 
-  # GET: /friendships/5/edit
-  get "/friendships/:id/edit" do
-    erb :"/friendships/edit.html"
+  # GET: /friends/5/edit
+  get "/friends/:id/edit" do
+    erb :"/friends/edit.html"
   end
 
-  # PATCH: /friendships/5
-  patch "/friendships/:id" do
-    redirect "/friendships/:id"
+  # PATCH: /friends/5
+  patch "/friends/:id" do
+    redirect "/friends/:id"
   end
 
-  # DELETE: /friendships/5/delete
-  delete "/friendships/:id/delete" do
-    redirect "/friendships"
+  # DELETE: /friends/5/delete
+  delete "/friends/:id/delete" do
+    redirect "/friends"
   end
 end

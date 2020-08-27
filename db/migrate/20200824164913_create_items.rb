@@ -3,7 +3,7 @@ class CreateItems < ActiveRecord::Migration
     create_table :items do |t|
       t.string :title
       t.string :content
-      t.boolean :aquired
+      t.boolean :acquired
       t.belongs_to :list
       t.belongs_to :user
       t.timestamps null: false

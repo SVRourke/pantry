@@ -36,12 +36,16 @@ class ApplicationController < Sinatra::Base
   post "/login" do
     if !params.any?.nil?
       @user = User.find_by_username(params[:username])
-      if @user.authenticate(params[:password])
-        session[:user_id] = @user.id
-        redirect "/users/#{@user.id}"
+      if !!@user
+        if @user.authenticate(params[:password])
+          session[:user_id] = @user.id
+          redirect "/users/#{@user.id}"
+        else
+          redirect "/login"
+        end
+      else
+        redirect "/join"
       end
-    else
-      redirect "/login"
     end
   end
 

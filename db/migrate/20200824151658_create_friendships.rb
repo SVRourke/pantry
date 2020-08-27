@@ -4,7 +4,7 @@ class CreateFriendships < ActiveRecord::Migration
       t.belongs_to :user, foreign_key: true
       t.belongs_to :friend
       t.boolean :confirmed
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
